@@ -1,5 +1,7 @@
 # JSql
 
+![Verify status](https://github.com/lucar94/jsql/actions/workflows/maven.yml/badge.svg)
+
 **JSql** is a lightweight Java library that lets you query JSON files using standard SQL syntax through jOOQ's DSL. It transforms a JSON array (from a `String` or file) into an in-memory SQL table you can query with familiar jOOQ constructs.
 
 ---
