@@ -4,22 +4,14 @@ import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.Select;
 import org.jooq.impl.DSL;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.lucar94.jsql.JSql;
 
 import java.io.File;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.select;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.lucar94.jsql.internal.DbConstants.H2_PASSWORD;
-import static org.lucar94.jsql.internal.DbConstants.H2_URL;
-import static org.lucar94.jsql.internal.DbConstants.H2_USER;
 
 /**
  * This class contains Use Case integration tests for the JSql class.
@@ -59,18 +51,6 @@ class JSqlUCIntegrationTest {
                 }
             ]
             """;
-
-    @AfterEach
-    void tearDown() throws SQLException {
-        Connection conn = DriverManager.getConnection(H2_URL, H2_USER, H2_PASSWORD);
-        String sql = "DROP TABLE IF EXISTS JSON_TABLE";
-
-        try (Statement stmt = conn.createStatement()) {
-            stmt.executeUpdate(sql);
-        } catch (SQLException e) {
-            System.err.println("Error dropping table: " + e.getMessage());
-        }
-    }
 
     /**
      * This test checks the integration of JSql with a one-level JSON input.

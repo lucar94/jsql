@@ -17,14 +17,10 @@ public class DbInitializerImpl implements DbInitializer {
 
     @Override
     public void initialize(List<Map<String, Object>> json, String tableName, DSLContext dslContext) {
-        logger.info("Original columns name {}",
-                json.stream().flatMap(map -> map.keySet().stream()).collect(Collectors.joining(", ")));
         Set<String> columns = json.stream()
                 .flatMap(map -> map.keySet().stream())
                 .map(DbUtils::sanitizeColumnName)
                 .collect(Collectors.toSet());
-
-        logger.info("Columns to create {}", columns);
 
         StringBuilder ddlBuilder = new StringBuilder("CREATE TABLE %s (");
         columns.forEach(c -> ddlBuilder.append(c).append(" VARCHAR(255), "));
