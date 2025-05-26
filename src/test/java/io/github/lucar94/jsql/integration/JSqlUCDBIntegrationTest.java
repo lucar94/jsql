@@ -1,10 +1,10 @@
-package org.lucar94.jsql.integration;
+package io.github.lucar94.jsql.integration;
 
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.Select;
 import org.junit.jupiter.api.Test;
-import org.lucar94.jsql.JSql;
+import io.github.lucar94.jsql.JSql;
 
 import static org.jooq.impl.DSL.select;
 import static org.junit.jupiter.api.Assertions.assertEquals;

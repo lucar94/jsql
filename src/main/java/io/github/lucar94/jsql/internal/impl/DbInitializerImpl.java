@@ -1,8 +1,8 @@
-package org.lucar94.jsql.internal.impl;
+package io.github.lucar94.jsql.internal.impl;
 
 import org.jooq.DSLContext;
-import org.lucar94.jsql.internal.DbInitializer;
-import org.lucar94.jsql.internal.utils.DbUtils;
+import io.github.lucar94.jsql.internal.DbInitializer;
+import io.github.lucar94.jsql.internal.utils.DbUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

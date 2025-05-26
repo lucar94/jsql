@@ -1,4 +1,4 @@
-package org.lucar94.jsql.internal;
+package io.github.lucar94.jsql.internal;
 
 import java.io.File;
 import java.util.List;

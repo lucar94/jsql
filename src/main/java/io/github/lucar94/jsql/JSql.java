@@ -1,4 +1,4 @@
-package org.lucar94.jsql;
+package io.github.lucar94.jsql;
 
 import org.jooq.DSLContext;
 import org.jooq.Record;
@@ -7,10 +7,10 @@ import org.jooq.SQLDialect;
 import org.jooq.Select;
 import org.jooq.Table;
 import org.jooq.impl.DSL;
-import org.lucar94.jsql.internal.DbInitializer;
-import org.lucar94.jsql.internal.JsonParser;
-import org.lucar94.jsql.internal.impl.DbInitializerImpl;
-import org.lucar94.jsql.internal.impl.JsonParserImpl;
+import io.github.lucar94.jsql.internal.DbInitializer;
+import io.github.lucar94.jsql.internal.JsonParser;
+import io.github.lucar94.jsql.internal.impl.DbInitializerImpl;
+import io.github.lucar94.jsql.internal.impl.JsonParserImpl;
 
 import java.io.File;
 import java.sql.Connection;
@@ -20,10 +20,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import static org.lucar94.jsql.internal.DbConstants.H2_PASSWORD;
-import static org.lucar94.jsql.internal.DbConstants.H2_TABLE_NAME;
-import static org.lucar94.jsql.internal.DbConstants.H2_URL;
-import static org.lucar94.jsql.internal.DbConstants.H2_USER;
+import static io.github.lucar94.jsql.internal.DbConstants.H2_PASSWORD;
+import static io.github.lucar94.jsql.internal.DbConstants.H2_TABLE_NAME;
+import static io.github.lucar94.jsql.internal.DbConstants.H2_URL;
+import static io.github.lucar94.jsql.internal.DbConstants.H2_USER;
 
 public class JSql implements AutoCloseable {
 

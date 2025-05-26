@@ -1,7 +1,7 @@
-package org.lucar94.jsql.integration;
+package io.github.lucar94.jsql.integration;
 
 import org.junit.jupiter.api.Test;
-import org.lucar94.jsql.JSql;
+import io.github.lucar94.jsql.JSql;
 import org.mockito.Mockito;
 
 import java.io.File;

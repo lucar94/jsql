@@ -1,4 +1,4 @@
-package org.lucar94.jsql.internal.utils;
+package io.github.lucar94.jsql.internal.utils;
 
 public class DbUtils {
 

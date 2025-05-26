@@ -1,11 +1,11 @@
-package org.lucar94.jsql.integration;
+package io.github.lucar94.jsql.integration;
 
 import org.jooq.Record;
 import org.jooq.Result;
 import org.jooq.Select;
 import org.jooq.impl.DSL;
 import org.junit.jupiter.api.Test;
-import org.lucar94.jsql.JSql;
+import io.github.lucar94.jsql.JSql;
 
 import java.io.File;
 

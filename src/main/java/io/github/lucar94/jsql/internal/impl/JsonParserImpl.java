@@ -1,9 +1,9 @@
-package org.lucar94.jsql.internal.impl;
+package io.github.lucar94.jsql.internal.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.wnameless.json.flattener.JsonFlattener;
-import org.lucar94.jsql.internal.JsonParser;
+import io.github.lucar94.jsql.internal.JsonParser;
 
 import java.io.File;
 import java.io.IOException;
