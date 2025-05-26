@@ -1,0 +1,1395 @@
+[
+  {
+    "id": 1,
+    "name": "Marco Conti",
+    "age": 21,
+    "email": "marco.conti@example.com",
+    "isActive": true,
+    "registeredAt": "2021-10-27T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 87,
+      "city": "Roma",
+      "zip": "13833"
+    },
+    "phoneNumbers": [
+      "+393688249320",
+      "+393602306062"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Elisa Neri",
+    "age": 29,
+    "email": "elisa.neri@example.com",
+    "isActive": true,
+    "registeredAt": "2020-12-03T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 83,
+      "city": "Bari",
+      "zip": "59938"
+    },
+    "phoneNumbers": [
+      "+393755908385",
+      "+393689727727"
+    ],
+    "roles": [
+      "editor",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 3,
+    "name": "Davide Conti",
+    "age": 34,
+    "email": "davide.conti@example.com",
+    "isActive": false,
+    "registeredAt": "2022-10-28T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 73,
+      "city": "Bologna",
+      "zip": "11967"
+    },
+    "phoneNumbers": [
+      "+393243013912"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 4,
+    "name": "Chiara Conti",
+    "age": 40,
+    "email": "chiara.conti@example.com",
+    "isActive": true,
+    "registeredAt": "2020-07-09T00:00:00Z",
+    "address": {
+      "street": "Corso Italia",
+      "number": 49,
+      "city": "Napoli",
+      "zip": "57330"
+    },
+    "phoneNumbers": [
+      "+393727936125"
+    ],
+    "roles": [
+      "editor",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 5,
+    "name": "Anna Colombo",
+    "age": 32,
+    "email": "anna.colombo@example.com",
+    "isActive": true,
+    "registeredAt": "2023-11-17T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 51,
+      "city": "Milano",
+      "zip": "82401"
+    },
+    "phoneNumbers": [
+      "+393524824571",
+      "+393593558311"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 6,
+    "name": "Francesco Russo",
+    "age": 46,
+    "email": "francesco.russo@example.com",
+    "isActive": true,
+    "registeredAt": "2024-01-14T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 70,
+      "city": "Napoli",
+      "zip": "55178"
+    },
+    "phoneNumbers": [
+      "+393958210898",
+      "+393634159661"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 7,
+    "name": "Anna Conti",
+    "age": 28,
+    "email": "anna.conti@example.com",
+    "isActive": false,
+    "registeredAt": "2020-09-14T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 16,
+      "city": "Napoli",
+      "zip": "92522"
+    },
+    "phoneNumbers": [
+      "+393759682716",
+      "+393482176939"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 8,
+    "name": "Davide Bianchi",
+    "age": 18,
+    "email": "davide.bianchi@example.com",
+    "isActive": true,
+    "registeredAt": "2023-04-13T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 76,
+      "city": "Bari",
+      "zip": "89570"
+    },
+    "phoneNumbers": [
+      "+393258443381",
+      "+393810711935"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 9,
+    "name": "Sara Conti",
+    "age": 44,
+    "email": "sara.conti@example.com",
+    "isActive": false,
+    "registeredAt": "2020-05-30T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 92,
+      "city": "Venezia",
+      "zip": "92330"
+    },
+    "phoneNumbers": [
+      "+393273941616"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 10,
+    "name": "Sara Conti",
+    "age": 57,
+    "email": "sara.conti@example.com",
+    "isActive": true,
+    "registeredAt": "2024-01-06T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 35,
+      "city": "Bari",
+      "zip": "30692"
+    },
+    "phoneNumbers": [
+      "+393825744279"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 11,
+    "name": "Giulia Russo",
+    "age": 63,
+    "email": "giulia.russo@example.com",
+    "isActive": false,
+    "registeredAt": "2021-09-27T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 15,
+      "city": "Napoli",
+      "zip": "98416"
+    },
+    "phoneNumbers": [
+      "+393908550772",
+      "+393665954951"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 12,
+    "name": "Luca Rossi",
+    "age": 44,
+    "email": "luca.rossi@example.com",
+    "isActive": false,
+    "registeredAt": "2023-04-12T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 23,
+      "city": "Roma",
+      "zip": "28921"
+    },
+    "phoneNumbers": [
+      "+393654121610",
+      "+393912265712"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 13,
+    "name": "Sara Russo",
+    "age": 37,
+    "email": "sara.russo@example.com",
+    "isActive": true,
+    "registeredAt": "2020-04-27T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 16,
+      "city": "Venezia",
+      "zip": "38492"
+    },
+    "phoneNumbers": [
+      "+393916367105"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 14,
+    "name": "Marco Neri",
+    "age": 29,
+    "email": "marco.neri@example.com",
+    "isActive": false,
+    "registeredAt": "2020-12-02T00:00:00Z",
+    "address": {
+      "street": "Corso Italia",
+      "number": 92,
+      "city": "Palermo",
+      "zip": "17999"
+    },
+    "phoneNumbers": [
+      "+393528564215"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 15,
+    "name": "Francesco Verdi",
+    "age": 34,
+    "email": "francesco.verdi@example.com",
+    "isActive": true,
+    "registeredAt": "2021-08-24T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 43,
+      "city": "Venezia",
+      "zip": "29223"
+    },
+    "phoneNumbers": [
+      "+393457418709",
+      "+393861951606"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 16,
+    "name": "Marco Ferrari",
+    "age": 31,
+    "email": "marco.ferrari@example.com",
+    "isActive": true,
+    "registeredAt": "2022-10-03T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 82,
+      "city": "Bologna",
+      "zip": "93266"
+    },
+    "phoneNumbers": [
+      "+393904058086"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 17,
+    "name": "Anna Bianchi",
+    "age": 35,
+    "email": "anna.bianchi@example.com",
+    "isActive": false,
+    "registeredAt": "2023-11-08T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 90,
+      "city": "Venezia",
+      "zip": "10155"
+    },
+    "phoneNumbers": [
+      "+393354696300",
+      "+393700712431"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 18,
+    "name": "Elisa Neri",
+    "age": 30,
+    "email": "elisa.neri@example.com",
+    "isActive": false,
+    "registeredAt": "2023-12-25T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 62,
+      "city": "Torino",
+      "zip": "36477"
+    },
+    "phoneNumbers": [
+      "+393641158117"
+    ],
+    "roles": [
+      "editor",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 19,
+    "name": "Marco Verdi",
+    "age": 31,
+    "email": "marco.verdi@example.com",
+    "isActive": false,
+    "registeredAt": "2020-03-31T00:00:00Z",
+    "address": {
+      "street": "Piazza Duomo",
+      "number": 71,
+      "city": "Venezia",
+      "zip": "40726"
+    },
+    "phoneNumbers": [
+      "+393335569564",
+      "+393805594547"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 20,
+    "name": "Luca Ferrari",
+    "age": 18,
+    "email": "luca.ferrari@example.com",
+    "isActive": true,
+    "registeredAt": "2023-01-04T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 21,
+      "city": "Torino",
+      "zip": "96859"
+    },
+    "phoneNumbers": [
+      "+393595619157"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 21,
+    "name": "Francesco Conti",
+    "age": 41,
+    "email": "francesco.conti@example.com",
+    "isActive": true,
+    "registeredAt": "2020-01-28T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 51,
+      "city": "Bologna",
+      "zip": "61340"
+    },
+    "phoneNumbers": [
+      "+393750106461",
+      "+393944325996"
+    ],
+    "roles": [
+      "editor",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 22,
+    "name": "Giulia Esposito",
+    "age": 23,
+    "email": "giulia.esposito@example.com",
+    "isActive": true,
+    "registeredAt": "2022-01-22T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 69,
+      "city": "Torino",
+      "zip": "78906"
+    },
+    "phoneNumbers": [
+      "+393650460226"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 23,
+    "name": "Mario Neri",
+    "age": 40,
+    "email": "mario.neri@example.com",
+    "isActive": true,
+    "registeredAt": "2023-10-23T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 43,
+      "city": "Torino",
+      "zip": "23903"
+    },
+    "phoneNumbers": [
+      "+393916144006"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 24,
+    "name": "Luca Colombo",
+    "age": 56,
+    "email": "luca.colombo@example.com",
+    "isActive": true,
+    "registeredAt": "2023-11-11T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 60,
+      "city": "Bari",
+      "zip": "26890"
+    },
+    "phoneNumbers": [
+      "+393351543440"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 25,
+    "name": "Marco Verdi",
+    "age": 52,
+    "email": "marco.verdi@example.com",
+    "isActive": false,
+    "registeredAt": "2020-04-29T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 59,
+      "city": "Palermo",
+      "zip": "84394"
+    },
+    "phoneNumbers": [
+      "+393463269861"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 26,
+    "name": "Giulia Esposito",
+    "age": 39,
+    "email": "giulia.esposito@example.com",
+    "isActive": false,
+    "registeredAt": "2020-11-03T00:00:00Z",
+    "address": {
+      "street": "Piazza Duomo",
+      "number": 30,
+      "city": "Bari",
+      "zip": "44434"
+    },
+    "phoneNumbers": [
+      "+393394803079"
+    ],
+    "roles": [
+      "user",
+      "editor"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 27,
+    "name": "Davide Esposito",
+    "age": 39,
+    "email": "davide.esposito@example.com",
+    "isActive": false,
+    "registeredAt": "2020-07-31T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 76,
+      "city": "Bologna",
+      "zip": "56885"
+    },
+    "phoneNumbers": [
+      "+393391876078"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 28,
+    "name": "Francesco Colombo",
+    "age": 48,
+    "email": "francesco.colombo@example.com",
+    "isActive": true,
+    "registeredAt": "2021-08-15T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 86,
+      "city": "Bari",
+      "zip": "97526"
+    },
+    "phoneNumbers": [
+      "+393767353997",
+      "+393338958787"
+    ],
+    "roles": [
+      "user",
+      "editor"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 29,
+    "name": "Elisa Bianchi",
+    "age": 33,
+    "email": "elisa.bianchi@example.com",
+    "isActive": false,
+    "registeredAt": "2022-07-30T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 33,
+      "city": "Napoli",
+      "zip": "37871"
+    },
+    "phoneNumbers": [
+      "+393865836232"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 30,
+    "name": "Mario Russo",
+    "age": 33,
+    "email": "mario.russo@example.com",
+    "isActive": true,
+    "registeredAt": "2021-04-14T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 50,
+      "city": "Firenze",
+      "zip": "28360"
+    },
+    "phoneNumbers": [
+      "+393957768213",
+      "+393976186173"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 31,
+    "name": "Francesco Colombo",
+    "age": 28,
+    "email": "francesco.colombo@example.com",
+    "isActive": true,
+    "registeredAt": "2021-09-14T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 16,
+      "city": "Roma",
+      "zip": "66352"
+    },
+    "phoneNumbers": [
+      "+393434324615",
+      "+393263604655"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 32,
+    "name": "Chiara Conti",
+    "age": 45,
+    "email": "chiara.conti@example.com",
+    "isActive": true,
+    "registeredAt": "2020-07-25T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 79,
+      "city": "Genova",
+      "zip": "23598"
+    },
+    "phoneNumbers": [
+      "+393736948910",
+      "+393309159949"
+    ],
+    "roles": [
+      "user",
+      "editor"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 33,
+    "name": "Mario Rossi",
+    "age": 36,
+    "email": "mario.rossi@example.com",
+    "isActive": true,
+    "registeredAt": "2021-01-11T00:00:00Z",
+    "address": {
+      "street": "Via Dante",
+      "number": 94,
+      "city": "Firenze",
+      "zip": "18942"
+    },
+    "phoneNumbers": [
+      "+393822357676",
+      "+393578527730"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 34,
+    "name": "Sara Conti",
+    "age": 22,
+    "email": "sara.conti@example.com",
+    "isActive": false,
+    "registeredAt": "2022-08-05T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 56,
+      "city": "Roma",
+      "zip": "87869"
+    },
+    "phoneNumbers": [
+      "+393740939412"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 35,
+    "name": "Anna Romano",
+    "age": 62,
+    "email": "anna.romano@example.com",
+    "isActive": true,
+    "registeredAt": "2020-08-28T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 86,
+      "city": "Firenze",
+      "zip": "93302"
+    },
+    "phoneNumbers": [
+      "+393904269390",
+      "+393782902098"
+    ],
+    "roles": [
+      "editor",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 36,
+    "name": "Francesco Bianchi",
+    "age": 54,
+    "email": "francesco.bianchi@example.com",
+    "isActive": false,
+    "registeredAt": "2023-04-04T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 80,
+      "city": "Torino",
+      "zip": "31870"
+    },
+    "phoneNumbers": [
+      "+393334828103"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 37,
+    "name": "Davide Colombo",
+    "age": 61,
+    "email": "davide.colombo@example.com",
+    "isActive": false,
+    "registeredAt": "2024-01-11T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 85,
+      "city": "Napoli",
+      "zip": "45466"
+    },
+    "phoneNumbers": [
+      "+393291989976",
+      "+393803832652"
+    ],
+    "roles": [
+      "user",
+      "editor"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 38,
+    "name": "Anna Romano",
+    "age": 54,
+    "email": "anna.romano@example.com",
+    "isActive": true,
+    "registeredAt": "2020-02-29T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 74,
+      "city": "Roma",
+      "zip": "73262"
+    },
+    "phoneNumbers": [
+      "+393236530661",
+      "+393756183581"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 39,
+    "name": "Anna Verdi",
+    "age": 39,
+    "email": "anna.verdi@example.com",
+    "isActive": false,
+    "registeredAt": "2022-01-05T00:00:00Z",
+    "address": {
+      "street": "Corso Italia",
+      "number": 89,
+      "city": "Bologna",
+      "zip": "28513"
+    },
+    "phoneNumbers": [
+      "+393388683078"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 40,
+    "name": "Sara Verdi",
+    "age": 31,
+    "email": "sara.verdi@example.com",
+    "isActive": true,
+    "registeredAt": "2022-01-24T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 56,
+      "city": "Napoli",
+      "zip": "48907"
+    },
+    "phoneNumbers": [
+      "+393631258614"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 41,
+    "name": "Elisa Neri",
+    "age": 33,
+    "email": "elisa.neri@example.com",
+    "isActive": false,
+    "registeredAt": "2023-12-05T00:00:00Z",
+    "address": {
+      "street": "Via Garibaldi",
+      "number": 11,
+      "city": "Firenze",
+      "zip": "46891"
+    },
+    "phoneNumbers": [
+      "+393778021584"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 42,
+    "name": "Giulia Ferrari",
+    "age": 64,
+    "email": "giulia.ferrari@example.com",
+    "isActive": true,
+    "registeredAt": "2020-10-14T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 57,
+      "city": "Venezia",
+      "zip": "79410"
+    },
+    "phoneNumbers": [
+      "+393231420347",
+      "+393303071033"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 43,
+    "name": "Marco Ferrari",
+    "age": 32,
+    "email": "marco.ferrari@example.com",
+    "isActive": false,
+    "registeredAt": "2023-10-26T00:00:00Z",
+    "address": {
+      "street": "Corso Italia",
+      "number": 46,
+      "city": "Milano",
+      "zip": "49278"
+    },
+    "phoneNumbers": [
+      "+393432498172"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 44,
+    "name": "Sara Verdi",
+    "age": 29,
+    "email": "sara.verdi@example.com",
+    "isActive": false,
+    "registeredAt": "2020-11-06T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 18,
+      "city": "Bari",
+      "zip": "70927"
+    },
+    "phoneNumbers": [
+      "+393971120099"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 45,
+    "name": "Chiara Verdi",
+    "age": 51,
+    "email": "chiara.verdi@example.com",
+    "isActive": true,
+    "registeredAt": "2022-08-27T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 15,
+      "city": "Firenze",
+      "zip": "61791"
+    },
+    "phoneNumbers": [
+      "+393645041963"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 46,
+    "name": "Sara Romano",
+    "age": 49,
+    "email": "sara.romano@example.com",
+    "isActive": true,
+    "registeredAt": "2021-12-18T00:00:00Z",
+    "address": {
+      "street": "Viale Europa",
+      "number": 89,
+      "city": "Milano",
+      "zip": "60312"
+    },
+    "phoneNumbers": [
+      "+393603183631"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 47,
+    "name": "Davide Neri",
+    "age": 29,
+    "email": "davide.neri@example.com",
+    "isActive": true,
+    "registeredAt": "2020-06-14T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 69,
+      "city": "Venezia",
+      "zip": "91211"
+    },
+    "phoneNumbers": [
+      "+393317936945",
+      "+393653893206"
+    ],
+    "roles": [
+      "user"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 48,
+    "name": "Francesco Rossi",
+    "age": 40,
+    "email": "francesco.rossi@example.com",
+    "isActive": false,
+    "registeredAt": "2022-02-13T00:00:00Z",
+    "address": {
+      "street": "Piazza Duomo",
+      "number": 43,
+      "city": "Palermo",
+      "zip": "24020"
+    },
+    "phoneNumbers": [
+      "+393829465294",
+      "+393540786673"
+    ],
+    "roles": [
+      "admin"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": true,
+        "sms": true
+      }
+    }
+  },
+  {
+    "id": 49,
+    "name": "Luca Rossi",
+    "age": 30,
+    "email": "luca.rossi@example.com",
+    "isActive": true,
+    "registeredAt": "2023-08-28T00:00:00Z",
+    "address": {
+      "street": "Via Verdi",
+      "number": 36,
+      "city": "Bari",
+      "zip": "67606"
+    },
+    "phoneNumbers": [
+      "+393846076845"
+    ],
+    "roles": [
+      "moderator"
+    ],
+    "preferences": {
+      "newsletter": true,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  },
+  {
+    "id": 50,
+    "name": "Mario Esposito",
+    "age": 50,
+    "email": "mario.esposito@example.com",
+    "isActive": true,
+    "registeredAt": "2022-11-13T00:00:00Z",
+    "address": {
+      "street": "Via Roma",
+      "number": 7,
+      "city": "Bologna",
+      "zip": "19335"
+    },
+    "phoneNumbers": [
+      "+393728240995",
+      "+393877363500"
+    ],
+    "roles": [
+      "admin",
+      "user"
+    ],
+    "preferences": {
+      "newsletter": false,
+      "notifications": {
+        "email": false,
+        "sms": false
+      }
+    }
+  }
+]
