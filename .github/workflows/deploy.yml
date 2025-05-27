@@ -29,4 +29,4 @@ jobs:
           gpg --list-secret-keys
 
       - name: Deploy to Maven Central
-        run: mvn clean deploy -P release -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -DskipTests=true -B -U
+        run: mvn clean deploy -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -DskipTests=true -B -U
