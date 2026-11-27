@@ -76,6 +76,10 @@ public class JSql implements AutoCloseable {
             throw new IllegalStateException("JSON data not provided. Use withJson() to set JSON data.");
         }
 
+        List<Map<String, Object>> flattenJson = this.json == null ?
+                this.jsonParser.flatten(this.jsonFile) :
+                this.jsonParser.flatten(this.json);
+
         try {
             this.connection = DriverManager.getConnection(H2_URL, H2_USER, H2_PASSWORD);
         } catch (SQLException e) {
@@ -85,11 +89,13 @@ public class JSql implements AutoCloseable {
         this.dslContext = DSL.using(this.connection, SQLDialect.H2);
         this.table = DSL.table(DSL.name(tableName));
 
-        List<Map<String, Object>> flattenJson = this.json == null ?
-                this.jsonParser.flatten(this.jsonFile) :
-                this.jsonParser.flatten(this.json);
-
-        dbInitializer.initialize(flattenJson, this.tableName, this.dslContext);
+        try {
+            dbInitializer.initialize(flattenJson, this.tableName, this.dslContext);
+        } catch (RuntimeException e) {
+            // Don't leak the connection: it would keep the in-memory database alive
+            close();
+            throw e;
+        }
 
         this.isBuild = true;
         return this;
