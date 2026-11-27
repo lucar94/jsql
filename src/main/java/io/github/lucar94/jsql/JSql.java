@@ -17,6 +17,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
@@ -67,7 +68,7 @@ public class JSql implements AutoCloseable {
 
     public JSql withTableName(String tableName) {
         Objects.requireNonNull(tableName, "Table name cannot be null");
-        this.tableName = tableName.toUpperCase();
+        this.tableName = tableName.toUpperCase(Locale.ROOT);
         return this;
     }
 

@@ -41,4 +41,16 @@ class DbUtilsTest {
         assertEquals("", result);
     }
 
+    @Test
+    void testToColumnNameSanitizesAndUpperCases() {
+        assertEquals("ADDRESS_CITY", DbUtils.toColumnName("address.city"));
+        assertEquals("PHONES_0", DbUtils.toColumnName("phones[0]"));
+        assertEquals("ISACTIVE", DbUtils.toColumnName("isActive"));
+    }
+
+    @Test
+    void testToColumnNameThrowsExceptionWhenNoValidCharacterIsLeft() {
+        assertThrows(IllegalArgumentException.class, () -> DbUtils.toColumnName("!!!"));
+    }
+
 }
