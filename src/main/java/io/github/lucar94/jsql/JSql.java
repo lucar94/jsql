@@ -9,6 +9,7 @@ import org.jooq.Table;
 import org.jooq.impl.DSL;
 import io.github.lucar94.jsql.internal.DbInitializer;
 import io.github.lucar94.jsql.internal.JsonParser;
+import io.github.lucar94.jsql.internal.JsonRows;
 import io.github.lucar94.jsql.internal.impl.DbInitializerImpl;
 import io.github.lucar94.jsql.internal.impl.JsonParserImpl;
 
@@ -16,9 +17,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 
 import static io.github.lucar94.jsql.internal.DbConstants.H2_PASSWORD;
@@ -77,9 +76,9 @@ public class JSql implements AutoCloseable {
             throw new IllegalStateException("JSON data not provided. Use withJson() to set JSON data.");
         }
 
-        List<Map<String, Object>> flattenJson = this.json == null ?
-                this.jsonParser.flatten(this.jsonFile) :
-                this.jsonParser.flatten(this.json);
+        JsonRows rows = this.json == null ?
+                this.jsonParser.rows(this.jsonFile) :
+                this.jsonParser.rows(this.json);
 
         try {
             this.connection = DriverManager.getConnection(H2_URL, H2_USER, H2_PASSWORD);
@@ -91,7 +90,7 @@ public class JSql implements AutoCloseable {
         this.table = DSL.table(DSL.name(tableName));
 
         try {
-            dbInitializer.initialize(flattenJson, this.tableName, this.dslContext);
+            dbInitializer.initialize(rows, this.tableName, this.dslContext);
         } catch (RuntimeException e) {
             // Don't leak the connection: it would keep the in-memory database alive
             close();

@@ -57,6 +57,22 @@ If two different keys map to the same column (e.g. `a.b` and `a_b`, or `name` an
 
 ---
 
+## 📊 Benchmarks
+
+JSON arrays are read in streaming: rows are parsed one at a time and inserted in batches, so the whole document is never held in memory. The memory needed is about **1.5× the size of the JSON file**, almost all of it taken by the in-memory H2 table that holds the data.
+
+| JSON file | Rows | `build()` time | Minimum heap (`-Xmx`) | Heap used after `build()` |
+|---|---|---|---|---|
+| 29 MB | 100,000 | 2.1 s | 64 MB | 48 MB |
+| 145 MB | 500,000 | 7.0 s | 224 MB | 208 MB |
+| 582 MB | 2,000,000 | 25 s | 896 MB | 806 MB |
+
+As a rule of thumb, give the JVM a heap of at least **1.5× the JSON size plus some headroom** for your own application.
+
+<sub>Measured on an Apple M1 Pro (16 GB RAM), OpenJDK 25, with JSql 1.x. Each record is an object of about 300 bytes, with nested objects and arrays, flattened into 17 columns. "Minimum heap" is the smallest tested `-Xmx` that completes without `OutOfMemoryError`: tested values were 48/64 MB, 192/224 MB and 768/896 MB. Results depend on the shape of the data: many short values take more space per MB than few long ones.</sub>
+
+---
+
 ## 📦 Requirements
 - Java 17 or higher
 
