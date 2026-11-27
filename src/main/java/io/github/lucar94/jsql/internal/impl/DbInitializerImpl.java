@@ -11,14 +11,11 @@ import io.github.lucar94.jsql.internal.utils.DbUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.TreeSet;
 
 public class DbInitializerImpl implements DbInitializer {
 
@@ -26,28 +23,52 @@ public class DbInitializerImpl implements DbInitializer {
 
     @Override
     public void initialize(List<Map<String, Object>> json, String tableName, DSLContext dslContext) {
-        Set<String> columns = json.stream()
-                .flatMap(map -> map.keySet().stream())
-                .map(DbUtils::sanitizeColumnName)
-                .sorted()
-                .collect(Collectors.toCollection(LinkedHashSet::new));
+        Map<String, String> keyToColumn = mapKeysToColumns(json);
+        List<String> columns = List.copyOf(new TreeSet<>(keyToColumn.values()));
 
-        StringBuilder ddlBuilder = new StringBuilder("CREATE TABLE %s (");
-        columns.forEach(c -> ddlBuilder.append(c).append(" VARCHAR(255), "));
-        ddlBuilder.append(")");
+        // All identifiers are quoted, so reserved words, leading digits and
+        // special characters in the table name are safe
+        Table<?> table = DSL.table(DSL.name(tableName));
+        List<Field<String>> fields = columns.stream()
+                .map(c -> DSL.field(DSL.name(c), SQLDataType.VARCHAR(255)))
+                .toList();
 
-        String ddl = ddlBuilder.toString().replaceAll(",(?=[^,]*$)", "");
-        dslContext.execute(String.format(ddl, tableName));
+        dslContext.createTable(table).columns(fields).execute();
 
         logger.debug("Created table {} with columns {}", tableName, columns);
 
-        if (columns.isEmpty() || json.isEmpty()) {
+        if (fields.isEmpty() || json.isEmpty()) {
             return;
         }
 
-        insertRows(json, tableName, new ArrayList<>(columns), dslContext);
+        insertRows(json, keyToColumn, columns, table, fields, dslContext);
 
         logger.debug("Inserted {} rows into table {}", json.size(), tableName);
+    }
+
+    /**
+     * Maps every flattened JSON key to its column name, failing if two different keys
+     * would end up in the same column (e.g. {@code "a.b"} and {@code "a_b"}, or
+     * {@code "name"} and {@code "Name"}): one of the values would otherwise be lost.
+     */
+    private Map<String, String> mapKeysToColumns(List<Map<String, Object>> json) {
+        Map<String, String> keyToColumn = new HashMap<>();
+        Map<String, String> columnToKey = new HashMap<>();
+
+        json.stream().flatMap(row -> row.keySet().stream()).forEach(key -> {
+            if (keyToColumn.containsKey(key)) {
+                return;
+            }
+            String column = DbUtils.toColumnName(key);
+            String otherKey = columnToKey.putIfAbsent(column, key);
+            if (otherKey != null) {
+                throw new IllegalArgumentException(String.format(
+                        "JSON keys \"%s\" and \"%s\" both map to column %s", otherKey, key, column));
+            }
+            keyToColumn.put(key, column);
+        });
+
+        return keyToColumn;
     }
 
     /**
@@ -55,24 +76,19 @@ public class DbInitializerImpl implements DbInitializer {
      * Values are passed as bind parameters, never concatenated into the SQL,
      * and keys missing from a row are bound as NULL.
      */
-    private void insertRows(List<Map<String, Object>> json, String tableName,
-                            List<String> columns, DSLContext dslContext) {
-        // Unquoted names, to match the unquoted identifiers used in the DDL above
-        Table<?> table = DSL.table(DSL.unquotedName(tableName));
-        List<Field<String>> fields = columns.stream()
-                .map(c -> DSL.field(DSL.unquotedName(c), SQLDataType.VARCHAR))
-                .toList();
-
+    private void insertRows(List<Map<String, Object>> json, Map<String, String> keyToColumn,
+                            List<String> columns, Table<?> table, List<Field<String>> fields,
+                            DSLContext dslContext) {
         BatchBindStep batch = dslContext.batch(
                 dslContext.insertInto(table, fields)
                         .values(Collections.nCopies(fields.size(), null)));
 
         for (Map<String, Object> row : json) {
-            Map<String, Object> sanitizedRow = new HashMap<>();
-            row.forEach((key, value) -> sanitizedRow.put(DbUtils.sanitizeColumnName(key), value));
+            Map<String, Object> rowByColumn = new HashMap<>();
+            row.forEach((key, value) -> rowByColumn.put(keyToColumn.get(key), value));
 
             Object[] values = columns.stream()
-                    .map(sanitizedRow::get)
+                    .map(rowByColumn::get)
                     .map(value -> value == null ? null : value.toString())
                     .toArray();
             batch.bind(values);

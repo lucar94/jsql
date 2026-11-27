@@ -39,6 +39,24 @@ String name = record.get("NAME", String.class);
 
 ---
 
+## 🏷 Column names
+
+Each JSON key becomes a column whose name is:
+
+- **flattened**: nested objects and arrays use `.` and `[n]` (`address.city`, `phones[0]`), which become `_`, so `ADDRESS_CITY`, `PHONES_0`;
+- **sanitized**: any character other than letters, digits and `_` becomes `_`, and trailing `_` are removed;
+- **upper-cased**: `isActive` becomes `ISACTIVE`.
+
+Columns are always created as quoted identifiers, so keys that are SQL reserved words (`order`, `value`, `user`, …) or start with a digit work too. To reference them in a query use a quoted name:
+
+```java
+select().from(jSql.getTable()).where(field(name("ORDER")).eq("2"));
+```
+
+If two different keys map to the same column (e.g. `a.b` and `a_b`, or `name` and `Name`), `build()` throws an `IllegalArgumentException` instead of silently dropping one of the values.
+
+---
+
 ## 📦 Requirements
 - Java 17 or higher
 
