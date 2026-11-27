@@ -7,7 +7,7 @@ import org.jooq.Table;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import io.github.lucar94.jsql.internal.DbInitializer;
-import io.github.lucar94.jsql.internal.utils.DbUtils;
+import io.github.lucar94.jsql.internal.JsonRows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,16 +15,24 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
 
 public class DbInitializerImpl implements DbInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(DbInitializerImpl.class);
 
+    /** Rows sent to the database in a single JDBC batch. */
+    static final int BATCH_SIZE = 1000;
+
+    /**
+     * Reads the rows twice: the first pass collects the columns needed by
+     * {@code CREATE TABLE}, the second one inserts the rows in batches.
+     * At no point are all the rows held in memory.
+     */
     @Override
-    public void initialize(List<Map<String, Object>> json, String tableName, DSLContext dslContext) {
-        Map<String, String> keyToColumn = mapKeysToColumns(json);
-        List<String> columns = List.copyOf(new TreeSet<>(keyToColumn.values()));
+    public void initialize(JsonRows rows, String tableName, DSLContext dslContext) {
+        ColumnCollector collector = new ColumnCollector();
+        rows.forEach(collector::accept);
+        List<String> columns = collector.columns();
 
         // All identifiers are quoted, so reserved words, leading digits and
         // special characters in the table name are safe
@@ -37,64 +45,69 @@ public class DbInitializerImpl implements DbInitializer {
 
         logger.debug("Created table {} with columns {}", tableName, columns);
 
-        if (fields.isEmpty() || json.isEmpty()) {
+        if (fields.isEmpty()) {
             return;
         }
 
-        insertRows(json, keyToColumn, columns, table, fields, dslContext);
+        BatchInserter inserter = new BatchInserter(dslContext, table, fields, columns, collector);
+        rows.forEach(inserter::add);
+        inserter.flush();
 
-        logger.debug("Inserted {} rows into table {}", json.size(), tableName);
+        logger.debug("Inserted {} rows into table {}", inserter.inserted, tableName);
     }
 
     /**
-     * Maps every flattened JSON key to its column name, failing if two different keys
-     * would end up in the same column (e.g. {@code "a.b"} and {@code "a_b"}, or
-     * {@code "name"} and {@code "Name"}): one of the values would otherwise be lost.
-     */
-    private Map<String, String> mapKeysToColumns(List<Map<String, Object>> json) {
-        Map<String, String> keyToColumn = new HashMap<>();
-        Map<String, String> columnToKey = new HashMap<>();
-
-        json.stream().flatMap(row -> row.keySet().stream()).forEach(key -> {
-            if (keyToColumn.containsKey(key)) {
-                return;
-            }
-            String column = DbUtils.toColumnName(key);
-            String otherKey = columnToKey.putIfAbsent(column, key);
-            if (otherKey != null) {
-                throw new IllegalArgumentException(String.format(
-                        "JSON keys \"%s\" and \"%s\" both map to column %s", otherKey, key, column));
-            }
-            keyToColumn.put(key, column);
-        });
-
-        return keyToColumn;
-    }
-
-    /**
-     * Inserts all rows with a single prepared statement executed in batch.
+     * Inserts rows with a prepared statement executed in batches of {@link #BATCH_SIZE}.
      * Values are passed as bind parameters, never concatenated into the SQL,
      * and keys missing from a row are bound as NULL.
      */
-    private void insertRows(List<Map<String, Object>> json, Map<String, String> keyToColumn,
-                            List<String> columns, Table<?> table, List<Field<String>> fields,
-                            DSLContext dslContext) {
-        BatchBindStep batch = dslContext.batch(
-                dslContext.insertInto(table, fields)
-                        .values(Collections.nCopies(fields.size(), null)));
+    private static final class BatchInserter {
 
-        for (Map<String, Object> row : json) {
-            Map<String, Object> rowByColumn = new HashMap<>();
-            row.forEach((key, value) -> rowByColumn.put(keyToColumn.get(key), value));
+        private final DSLContext dslContext;
+        private final Table<?> table;
+        private final List<Field<String>> fields;
+        private final ColumnCollector collector;
+        private final Map<String, Integer> columnIndex = new HashMap<>();
 
-            Object[] values = columns.stream()
-                    .map(rowByColumn::get)
-                    .map(value -> value == null ? null : value.toString())
-                    .toArray();
-            batch.bind(values);
+        private BatchBindStep batch;
+        private int pending;
+        private long inserted;
+
+        BatchInserter(DSLContext dslContext, Table<?> table, List<Field<String>> fields,
+                      List<String> columns, ColumnCollector collector) {
+            this.dslContext = dslContext;
+            this.table = table;
+            this.fields = fields;
+            this.collector = collector;
+            for (int i = 0; i < columns.size(); i++) {
+                columnIndex.put(columns.get(i), i);
+            }
         }
 
-        batch.execute();
+        void add(Map<String, Object> row) {
+            Object[] values = new Object[fields.size()];
+            row.forEach((key, value) ->
+                    values[columnIndex.get(collector.columnFor(key))] = value == null ? null : value.toString());
+
+            if (batch == null) {
+                batch = dslContext.batch(dslContext.insertInto(table, fields)
+                        .values(Collections.nCopies(fields.size(), null)));
+            }
+            batch.bind(values);
+
+            if (++pending == BATCH_SIZE) {
+                flush();
+            }
+        }
+
+        void flush() {
+            if (pending > 0) {
+                batch.execute();
+                inserted += pending;
+            }
+            batch = null;
+            pending = 0;
+        }
     }
 
 }
